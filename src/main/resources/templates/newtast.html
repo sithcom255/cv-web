@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/header :: header"/>
+
+<body>
+<header><div th:replace="common/header :: navbar">...</div>
+
+</header>
+
+<b th:text="${name}">name</b>
+<tr th:each="task: ${taskx}">
+    <td th:text="${task.name}"/>
+</tr>
+<form th:action="@{/tasks}" method="post">
+    <input type="text" name="name" th:value="${task2.name}">
+    <input type="submit" value="Submit" />
+</form>
+
+<div class="container-fluid pt-3">
+
+</div>
+</body>
+</html>
