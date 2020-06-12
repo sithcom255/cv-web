@@ -1,17 +1,19 @@
 .card.draggable {
     margin-bottom: 1rem;
-    cursor: grab;
+
 }
 
 .droppable {
     background-color: var(--success);
-    min-height: 120px;
+
     margin-bottom: 1rem;
 }
+
 ul.timeline {
     list-style-type: none;
     position: relative;
 }
+
 ul.timeline:before {
     content: ' ';
     background: #d4d9df;
@@ -22,10 +24,12 @@ ul.timeline:before {
     height: 100%;
     z-index: 400;
 }
+
 ul.timeline > li {
     margin: 20px 0;
     padding-left: 20px;
 }
+
 ul.timeline > li:before {
     content: ' ';
     background: white;
@@ -38,6 +42,7 @@ ul.timeline > li:before {
     height: 20px;
     z-index: 400;
 }
+
 .masthead {
     height: 100vh;
     min-height: 500px;
@@ -46,3 +51,90 @@ ul.timeline > li:before {
     background-position: center;
     background-repeat: no-repeat;
 }
+
+@media only screen and (min-width: 767px) {
+    .force-single-line-nav {
+        /* hide what would be displayed on a second row of nav bar */
+        max-height: 51px !important;
+        overflow-y: hidden;
+    }
+}
+
+body {
+    padding-top: 51px;
+}
+
+.sticky-offset {
+    top: 51px;
+}
+
+#body-row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+#sidebar-container {
+    min-height: 100vh;
+    background-color: #333;
+    padding: 0;
+}
+
+/* Sidebar sizes when expanded and expanded */
+.sidebar-expanded {
+    width: 230px;
+}
+
+.sidebar-collapsed {
+    width: 60px;
+}
+
+/* Menu item*/
+#sidebar-container .list-group a {
+    height: 50px;
+    color: white;
+}
+
+/* Submenu item*/
+#sidebar-container .list-group .sidebar-submenu a {
+    height: 45px;
+    padding-left: 30px;
+}
+
+.sidebar-submenu {
+    font-size: 0.9rem;
+}
+
+/* Separators */
+.sidebar-separator-title {
+    background-color: #333;
+    height: 35px;
+}
+
+.sidebar-separator {
+    background-color: #333;
+    height: 25px;
+}
+
+.logo-separator {
+    background-color: #333;
+    height: 60px;
+}
+
+/* Closed submenu icon */
+#sidebar-container .list-group .list-group-item[aria-expanded="false"] .submenu-icon::after {
+    content: " \f0d7";
+    font-family: FontAwesome;
+    display: inline;
+    text-align: right;
+    padding-left: 10px;
+}
+
+/* Opened submenu icon */
+#sidebar-container .list-group .list-group-item[aria-expanded="true"] .submenu-icon::after {
+    content: " \f0da";
+    font-family: FontAwesome;
+    display: inline;
+    text-align: right;
+    padding-left: 10px;
+}
+

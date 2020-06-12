@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/header :: header"/>
+<body>
+<div th:replace="common/header :: navbar">...</div>
+<!-- Bootstrap row -->
+<div class="row" id="body-row" th:fragment="sidebar">
+    <!-- Sidebar -->
+    <div id="sidebar-container" class="sidebar-expanded d-none d-md-block col-2">
+        <!-- d-* hiddens the Sidebar in smaller devices. Its itens can be kept on the Navbar 'Menu' -->
+        <!-- Bootstrap List Group -->
+        <ul class="list-group sticky-top sticky-offset">
+            <!-- Separator with title -->
+            <li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
+                <small>IMPLEMENTED</small>
+            </li>
+            <!-- /END Separator -->
+            <!-- Menu with submenu -->
+
+            <a href="/tasks" class="bg-dark list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                    <span class="fa fa-tasks fa-fw mr-3"></span>
+                    <span class="menu-collapsed">Kanban Board</span>
+                </div>
+            </a>
+            <a href="/maketask" class="bg-dark list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                    <span class="fa fa-tasks fa-fw mr-3"></span>
+                    <span class="menu-collapsed">New Task</span>
+                </div>
+            </a>
+            <a href="/resetDemo" class="bg-dark list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                    <span class="fa fa-tasks fa-fw mr-3"></span>
+                    <span class="menu-collapsed">Reset Demo</span>
+                </div>
+            </a>
+            <!-- Separator with title -->
+            <li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
+                <small>Features in Development</small>
+            </li>
+            <!-- /END Separator -->
+            <a href="#" class="bg-dark list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                    <span class="fa fa-calendar fa-fw mr-3"></span>
+                    <span class="menu-collapsed">Calendar</span>
+                </div>
+            </a>
+            <a href="#" class="bg-dark list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                    <span class="fa fa-envelope-o fa-fw mr-3"></span>
+                    <span class="menu-collapsed">Messages <span
+                            class="badge badge-pill badge-primary ml-2">5</span></span>
+                </div>
+            </a>
+            <!-- Separator without title -->
+            <li class="list-group-item sidebar-separator menu-collapsed"></li>
+            <!-- /END Separator -->
+            <a href="#" class="bg-dark list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                    <span class="fa fa-question fa-fw mr-3"></span>
+                    <span class="menu-collapsed">Help</span>
+                </div>
+            </a>
+            <a href="#" data-toggle="sidebar-colapse"
+               class="bg-dark list-group-item list-group-item-action d-flex align-items-center">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                    <span id="collapse-icon" class="fa fa-2x mr-3"></span>
+                    <span id="collapse-text" class="menu-collapsed">Collapse</span>
+                </div>
+            </a>
+            <!-- Logo -->
+            <li class="list-group-item logo-separator d-flex justify-content-center">
+                <img src="https://v4-alpha.getbootstrap.com/assets/brand/bootstrap-solid.svg" width="30" height="30">
+            </li>
+        </ul>
+        <!-- List Group END-->
+    </div>
+    <!-- sidebar-container END -->
+
+    <!-- MAIN -->
+    <div class="col">
+        <h2 class="mb-5">New Task</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <form action="#" th:action="@{/newtask}" th:object="${task}" method="post">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="name" class="col-form-label">Name</label>
+                            <input type="text" th:field="*{name}" class="form-control" id="name" placeholder="Name">
+                            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="description" class="col-form-label">Email</label>
+                            <input type="text" th:field="*{description}" class="form-control" id="description"
+                                   placeholder="Description">
+                            <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"
+                                  class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group  col-md-6">
+                            <label class="col-form-label" for="status">Progress status</label>
+
+                            <select id="status" th:field="*{status}" name="status"
+                                    class="form-control">
+                                <option value="toDo">To-Do</option>
+                                <option value="inProg">In progress</option>
+                                <option value="done">Done</option>
+                            </select>
+
+                        </div>
+                        <div class="form-group  col-md-6">
+                            <label class="col-form-label" for="ass" >Assignee</label>
+
+                            <select th:field="*{helper}" id="ass" name="ass" class="form-control">
+                                <option th:each="assignee : ${users}" th:value="${assignee.fullName}" th:text="${assignee.fullName}">
+                                    Assignee
+                                </option>
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-6 mt-5">
+                            <input type="submit" class="btn btn-primary" value="Add Task">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Main Col END -->
+
+</div>
+
+</body>
+</html>
+
+</div>
+</body>
+</html>

@@ -2,21 +2,66 @@ package com.webapp.CV.domain;
 
 
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.sql.Blob;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import java.util.Set;
 
 @Entity
 public class Task {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private long id;
+
+    @NotBlank(message = "Name is mandatory")
     private String name;
     private String description;
-    private String resources;
+    @Column(columnDefinition = "varchar(255) default 'todo'")
+    private String status;
+    private String helper;
+
+    public User getAssignee() {
+        return assignee;
+    }
+
+    public void setAssignee(User assignee) {
+        this.assignee = assignee;
+    }
+
+    public String getHelper() {
+        return helper;
+    }
+
+    public void setHelper(String helper) {
+        this.helper = helper;
+    }
+
+    @OneToOne(cascade= CascadeType.ALL)
+    private User assignee;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
 
 
@@ -35,14 +80,4 @@ public class Task {
     public void setDescription(String description) {
         this.description = description;
     }
-
-    public String getResources() {
-        return resources;
-    }
-
-    public void setResources(String resources) {
-        this.resources = resources;
-    }
-
-
 }

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:fragment="header">
-    <title>Welcome to the Spring MVC Quickstart application! Get started quickly by signing up!</title>
+    <title>Jan Gavlík</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/css/bootstrap.min.css}"/>
     <link href="/css/bootstrap.css" rel="stylesheet" media="screen" th:href="@{/css/bootstrap.css}"/>
@@ -12,20 +12,20 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-xl navbar-dark bg-info fixed-top" th:fragment="navbar">
+<nav class="navbar navbar-expand-sm navbar-dark bg-info fixed-top force-single-line-nav" th:fragment="navbar">
     <div class="container">
         <div class="row">
             <div class="col-sm-4">
-                <a class=" navbar-brand" href="#">Profile</a>
+                <a class=" navbar-brand" href="/index">Profile</a>
             </div>
 
             <div class="col-sm-8">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Demo PM</a>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="tasks">PM</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Demo Member</a>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="MTasks">Thomas</a>
                     </li>
                 </ul>
             </div>
@@ -33,5 +33,6 @@
         </div>
     </div>
 </nav>
+</div>
 </body>
 </html>
