@@ -64,7 +64,7 @@ public class HomeController {
 
     @GetMapping("/resetDemo")
     public String reset() {
-        userService.deleteAll();
+
         taskService.deleteAll();
 
         Task task1 =new Task();

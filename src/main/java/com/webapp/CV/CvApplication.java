@@ -17,7 +17,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 @EntityScan(basePackages="com.webapp.CV")
 public class CvApplication extends SpringBootServletInitializer {
-
+//
 	@Autowired
 	TaskRepository taskRepository;
 
