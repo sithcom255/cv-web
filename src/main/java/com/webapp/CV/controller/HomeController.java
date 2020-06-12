@@ -48,9 +48,9 @@ public class HomeController {
     }
     @GetMapping("/MTasks")
     public String MTasks( Model model) {
-        model.addAttribute("todotask",taskService.findAllByAssigneeAndStatus(userService.findByName("User 1"),"toDo"));
-        model.addAttribute("inProgtask",taskService.findAllByAssigneeAndStatus(userService.findByName("User 1"),"inProg"));
-        model.addAttribute("doneTask",taskService.findAllByAssigneeAndStatus(userService.findByName("User 1"),"done"));
+        model.addAttribute("todotask",taskService.findAllByAssigneeAndStatus(userService.findByName("Thomas"),"toDo"));
+        model.addAttribute("inProgtask",taskService.findAllByAssigneeAndStatus(userService.findByName("Thomas"),"inProg"));
+        model.addAttribute("doneTask",taskService.findAllByAssigneeAndStatus(userService.findByName("Thomas"),"done"));
         return "MTasks";
     }
     @GetMapping("/getTask")
@@ -64,8 +64,8 @@ public class HomeController {
 
     @GetMapping("/resetDemo")
     public String reset() {
-    userService.deleteAll();
-    taskService.deleteAll();
+        userService.deleteAll();
+        taskService.deleteAll();
 
         Task task1 =new Task();
         task1.setStatus("done");
@@ -92,8 +92,6 @@ public class HomeController {
         task5.setName("Mapping");
         task5.setDescription("Implement many to many mapping for Task and User; good luck");
 
-
-
         User user1=new User();
         user1.setFullName("Thomas");
         User user2=new User();
@@ -108,13 +106,13 @@ public class HomeController {
         userService.save(user2);
         userService.save(user3);
 
-taskService.saveTask(task4);
-taskService.saveTask(task5);
+        taskService.saveTask(task4);
+        taskService.saveTask(task5);
         taskService.saveTask(task1);
         taskService.saveTask(task3);
         taskService.saveTask(task2);
 
-        return "resetDemo";
+        return "redirect:/tasks";
     }
 
     @GetMapping("/maketask")
@@ -126,7 +124,7 @@ taskService.saveTask(task5);
     @PostMapping("/newtask")
     public String newtask(@Valid @ModelAttribute("task") Task task, BindingResult result, Model model){
 
-task.setAssignee(userService.findByName(task.getHelper()));
+        task.setAssignee(userService.findByName(task.getHelper()));
        taskService.saveTask(task);
         return "redirect:/tasks";
     }
